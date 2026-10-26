@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://c661sjq7fnr1y"]
+
+[ext_resource type="Script" uid="uid://cw2i2tkwd15r0" path="res://scripts/loadmain.gd" id="1_lt04d"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_adwej"]
+font_size = 90
+
+[node name="Node2D" type="Node2D" unique_id=429037242]
+
+[node name="Label" type="Label" parent="." unique_id=1327030237]
+offset_left = -13.0
+offset_top = -15.0
+offset_right = 1166.0
+offset_bottom = 659.0
+text = "Charon"
+label_settings = SubResource("LabelSettings_adwej")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_lt04d")
+
+[node name="Button" type="Button" parent="." unique_id=1175118066]
+offset_right = 1172.0
+offset_bottom = 666.0
+
+[connection signal="pressed" from="Button" to="Label" method="_on_button_pressed"]
