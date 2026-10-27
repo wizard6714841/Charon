@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://bcf0b3fu47d1g"]
 
 [ext_resource type="Script" uid="uid://dqpqr0ulwe5a5" path="res://scripts/enemys/simple_enemy/simple_enemy.gd" id="1_apnxd"]
-[ext_resource type="Texture2D" uid="uid://bwo0jb6pd8own" path="res://assets/character/simple_enemy/PolygonPrototype_Texture_01.png" id="1_i7agh"]
+[ext_resource type="Texture2D" uid="uid://bwo0jb6pd8own" path="res://scenes/simple_enemy/PolygonPrototype_Texture_01.png" id="1_i7agh"]
 [ext_resource type="Animation" uid="uid://dmsjrlmg8osp3" path="res://assets/synty/animations/idle_base_sword.res" id="2_j83k6"]
 [ext_resource type="Script" uid="uid://couw105c3bde4" path="res://addons/godot_state_charts/state_chart.gd" id="3_uqbgc"]
 [ext_resource type="Script" uid="uid://jk2jm1g6q853" path="res://addons/godot_state_charts/compound_state.gd" id="4_apnxd"]

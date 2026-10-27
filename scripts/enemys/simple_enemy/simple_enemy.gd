@@ -5,7 +5,7 @@ extends BaseEnemy
 
 @onready var nav_agent : NavigationAgent3D = $NavigationAgent3D
 @onready var state_chart : StateChart = $StateChart
-@onready var animations : AnimationPlayer = $AnimationPlayer
+@onready var animations : AnimationPlayer = $animation_player
 
 var target : Node3D
 
@@ -56,11 +56,13 @@ func _on_idle_state_state_physics_processing(_delta: float) -> void:
 
 
 func _on_idle_state_state_entered() -> void:
-	animations.play("animations/idle_sword")
+	animations.play("enemy_animations/idle_base_sword")
 
 
 func _on_follow_state_state_entered() -> void:
-	animations.play("animations/air_guitar")
+	pass
+	#Animation Einfügen
+	animations.play()
 
 
 func _on_attack_range_body_entered(body: Node3D) -> void:

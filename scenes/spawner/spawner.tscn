@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bkfuk14qki6xc"]
+
+[ext_resource type="Script" uid="uid://bi3u0jxk560c3" path="res://scenes/spawner/spawner.gd" id="1_eoeca"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vcchk"]
+radius = 3.0
+
+[node name="spawner" type="Marker3D" unique_id=553548988]
+script = ExtResource("1_eoeca")
+
+[node name="activation_area" type="Area3D" parent="." unique_id=397398652]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="activation_area" unique_id=245873981]
+shape = SubResource("SphereShape3D_vcchk")
+
+[node name="Timer" type="Timer" parent="." unique_id=1725944009]
+process_mode = 3
+one_shot = true
+
+[connection signal="body_entered" from="activation_area" to="." method="_on_activation_area_body_entered"]
+[connection signal="body_exited" from="activation_area" to="." method="_on_activation_area_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

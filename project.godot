@@ -37,6 +37,7 @@ folder_colors={
 [global_group]
 
 enemy=""
+geometry=""
 
 [physics]
 
