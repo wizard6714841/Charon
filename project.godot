@@ -27,11 +27,16 @@ window/stretch/aspect="expand"
 [file_customization]
 
 folder_colors={
+"res://addons/": "teal",
 "res://assets/": "yellow",
 "res://resources/": "pink",
 "res://scenes/": "red",
 "res://scripts/": "blue"
 }
+
+[global_group]
+
+enemy=""
 
 [physics]
 
