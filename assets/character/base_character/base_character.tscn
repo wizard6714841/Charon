@@ -190,7 +190,9 @@ albedo_texture = ExtResource("1_letv0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("CapsuleShape3D_vcchk")
 
-[node name="Skeleton3D" type="Skeleton3D" parent="." unique_id=1650093001]
+[node name="Root" type="Node3D" parent="." unique_id=299705247]
+
+[node name="Skeleton3D" type="Skeleton3D" parent="Root" unique_id=1650093001]
 bones/0/name = "Pelvis"
 bones/0/parent = -1
 bones/0/rest = Transform3D(0, 0, 1, 0.9887751, 0.14941198, 0, -0.149412, 0.9887751, 0, 0, 0.8762761, 0)
@@ -577,13 +579,13 @@ bones/54/position = Vector3(0, 0, 0)
 bones/54/rotation = Quaternion(1.110223e-16, 0, 0, 1)
 bones/54/scale = Vector3(1, 1, 1)
 
-[node name="SK_Character_Female_NoFace_01" type="MeshInstance3D" parent="Skeleton3D" unique_id=709814334]
+[node name="SK_Character_Female_NoFace_01" type="MeshInstance3D" parent="Root/Skeleton3D" unique_id=709814334]
 mesh = SubResource("ArrayMesh_ovbvb")
 skin = SubResource("Skin_qktko")
 skeleton = NodePath("..")
 surface_material_override/0 = SubResource("StandardMaterial3D_d3nna")
 
-[node name="weapon_slot" type="BoneAttachment3D" parent="Skeleton3D" unique_id=1451921669]
+[node name="weapon_slot" type="BoneAttachment3D" parent="Root/Skeleton3D" unique_id=1451921669]
 transform = Transform3D(0.9999999, -3.210321e-08, 8.940697e-08, 5.7837774e-08, -1, -4.9092208e-08, 8.940697e-08, 1.2702405e-07, -0.9999999, -0.9357649, 1.3119497, 0.059932675)
 bone_name = "Hand_R"
 bone_idx = 29

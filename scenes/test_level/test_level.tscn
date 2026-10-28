@@ -193,4 +193,4 @@ spawn_enemys_at_start = true
 [node name="player" type="Node" parent="." unique_id=450328177]
 
 [node name="player_and_camera" parent="player" unique_id=1285950585 instance=ExtResource("9_4ck26")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.83551425, 0, 4.3426456)
