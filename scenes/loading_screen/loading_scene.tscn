@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://e64ursa2s12v"]
+
+[ext_resource type="Script" uid="uid://balq5f8jfao5w" path="res://scenes/loading_screen/progress_bar_loading.gd" id="1_oqxse"]
+
+[node name="LoadingScene" type="Node2D" unique_id=309533349]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=1272781467]
+offset_left = 282.0
+offset_top = 230.0
+offset_right = 786.0
+offset_bottom = 288.0
+tint_under = Color(0, 0, 0, 1)
+tint_over = Color(0, 0, 0, 1)
+tint_progress = Color(0.35318333, 0.00084512786, 0.51369244, 1)
+script = ExtResource("1_oqxse")
+
+[node name="Label" type="Label" parent="." unique_id=1614375080]
+offset_left = 1036.0
+offset_top = 586.0
+offset_right = 1111.0
+offset_bottom = 609.0
+text = "Loading..."
+
+[connection signal="tree_entered" from="TextureProgressBar" to="TextureProgressBar" method="_on_tree_entered"]
+[connection signal="tree_exited" from="TextureProgressBar" to="TextureProgressBar" method="_on_tree_exited"]
