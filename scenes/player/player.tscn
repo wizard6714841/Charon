@@ -184,7 +184,7 @@ bind/47/pose = Transform3D(1, 2.65702e-15, -1.618287e-14, 2.65702e-15, -1, 2.141
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lvxji"]
 albedo_texture = ExtResource("1_8afob")
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ys1xg"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dovo2"]
 
 [node name="player" type="CharacterBody3D" unique_id=1319063277 groups=["player"]]
 script = ExtResource("1_dovo2")
@@ -194,7 +194,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("CapsuleShape3D_vcchk")
 
 [node name="Skeleton3D" type="Skeleton3D" parent="." unique_id=1731869318]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0)
 bones/0/name = "Pelvis"
 bones/0/parent = -1
 bones/0/rest = Transform3D(0, 0, 1, 0.9887751, 0.14941198, 0, -0.149412, 0.9887751, 0, 0, 0.8762761, 0)
@@ -277,7 +276,7 @@ bones/11/parent = 10
 bones/11/rest = Transform3D(0.9974323, 3.3021482e-15, 0.07161552, -3.3055656e-15, 1, -7.0799355e-17, -0.07161552, -1.6611221e-16, 0.9974323, 0.27114528, -4.440892e-16, -0.00038136425)
 bones/11/enabled = true
 bones/11/position = Vector3(0.27114528, 0, -0.00038136425)
-bones/11/rotation = Quaternion(-2.428614e-17, 0.035830766, -1.6653345e-15, 0.9993579)
+bones/11/rotation = Quaternion(0.13278112, -0.264305, 0.0020661955, 0.95525277)
 bones/11/scale = Vector3(1, 1, 1)
 bones/12/name = "thumb_01_l"
 bones/12/parent = 11
@@ -382,7 +381,7 @@ bones/26/parent = 25
 bones/26/rest = Transform3D(0.9974323, -2.5505943e-15, 0.07161552, 2.537087e-15, 1, 2.7957413e-16, -0.07161552, -9.716146e-17, 0.9974323, -0.2711449, -4.440892e-16, 0.00038136088)
 bones/26/enabled = true
 bones/26/position = Vector3(-0.2711449, -2.842171e-16, 0.00038136088)
-bones/26/rotation = Quaternion(-1.0061396e-16, 0.035830766, 1.1657342e-15, 0.9993579)
+bones/26/rotation = Quaternion(-0.14426371, -0.083699636, -0.123026974, 0.97828776)
 bones/26/scale = Vector3(1, 1, 1)
 bones/27/name = "thumb_01_r"
 bones/27/parent = 26
@@ -588,10 +587,10 @@ skeleton = NodePath("..")
 surface_material_override/0 = SubResource("StandardMaterial3D_lvxji")
 
 [node name="weapon_slot" type="BoneAttachment3D" parent="Skeleton3D" unique_id=1451921669]
-transform = Transform3D(0.99999994, -2.3008875e-09, 5.9604645e-08, -4.5971245e-09, -0.99999994, -5.5276594e-08, 5.9604645e-08, 1.1212289e-07, -0.9999999, -0.9357649, 1.3119498, 0.059932735)
+transform = Transform3D(0.93899333, 0.2829205, -0.19556966, 0.21656185, -0.92810476, -0.30285746, -0.26719385, 0.24202828, -0.93275386, -0.8951953, 1.3144917, 0.1018353)
 bone_name = "Hand_R"
 bone_idx = 29
 
 [node name="animation_player" type="AnimationPlayer" parent="." unique_id=934406860]
-libraries/animations = SubResource("AnimationLibrary_ys1xg")
-autoplay = &"animations/attack_heavy_combo"
+libraries/player_animations = SubResource("AnimationLibrary_dovo2")
+autoplay = &"player_animations/idle"

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qmcfrhxicauo"
-path.s3tc="res://.godot/imported/T_Polygon_Dummy_01.png-757a315ae0f3d103e28924ea7b0a3636.s3tc.ctex"
+uid="uid://d4n4n0d2w8e7u"
+path.s3tc="res://.godot/imported/PolygonPrototype_Texture_03.png-e8a895f92dd7d7e8fe264976b881daa7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/character/base_character/T_Polygon_Dummy_01.png"
-dest_files=["res://.godot/imported/T_Polygon_Dummy_01.png-757a315ae0f3d103e28924ea7b0a3636.s3tc.ctex"]
+source_file="res://assets/character/base_character/PolygonPrototype_Texture_03.png"
+dest_files=["res://.godot/imported/PolygonPrototype_Texture_03.png-e8a895f92dd7d7e8fe264976b881daa7.s3tc.ctex"]
 
 [params]
 

@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://dqpqr0ulwe5a5" path="res://scripts/enemys/simple_enemy/simple_enemy.gd" id="1_apnxd"]
 [ext_resource type="Texture2D" uid="uid://bwo0jb6pd8own" path="res://scenes/simple_enemy/PolygonPrototype_Texture_01.png" id="1_i7agh"]
-[ext_resource type="Animation" uid="uid://dmsjrlmg8osp3" path="res://assets/synty/animations/idle_base_sword.res" id="2_j83k6"]
 [ext_resource type="Script" uid="uid://couw105c3bde4" path="res://addons/godot_state_charts/state_chart.gd" id="3_uqbgc"]
 [ext_resource type="Script" uid="uid://jk2jm1g6q853" path="res://addons/godot_state_charts/compound_state.gd" id="4_apnxd"]
 [ext_resource type="Script" uid="uid://cytafq8i1y8qm" path="res://addons/godot_state_charts/atomic_state.gd" id="5_othax"]
@@ -190,9 +189,6 @@ bind/47/pose = Transform3D(1, 2.65702e-15, -1.618287e-14, 2.65702e-15, -1, 2.141
 albedo_texture = ExtResource("1_i7agh")
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j3tyx"]
-_data = {
-&"idle_base_sword": ExtResource("2_j83k6")
-}
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vcchk"]
 radius = 1.0
@@ -607,7 +603,7 @@ bone_idx = 29
 
 [node name="animation_player" type="AnimationPlayer" parent="." unique_id=1423312820]
 libraries/enemy_animations = SubResource("AnimationLibrary_j3tyx")
-autoplay = &"enemy_animations/idle_base_sword"
+autoplay = &"enemy_animations/idle"
 
 [node name="attack_range" type="Area3D" parent="." unique_id=2014579265]
 
