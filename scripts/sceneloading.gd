@@ -9,14 +9,14 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
-# Lädt eine Scene ohne Ladeszene. Eingabe: "scenes//name_der_szene.tscn"
+## Lädt eine Scene ohne Ladeszene. 
+##Eingabe: rechtsklick auf Scene -> UID kopieren, UID in "" einfügen
 func LoadScene( Scene:String ) -> void:
 	
-	ResourceLoader.load_threaded_request(Scene)
+	ResourceLoader.load_threaded_request(Scene,"",1)
 
 	while Load:
 		ResourceLoader.load_threaded_get_status(Scene,SceneStatus)
-		print(SceneStatus[0])
 		if SceneStatus[0] == 1:
 			var Szene = ResourceLoader.load_threaded_get(Scene)
 			get_tree().change_scene_to_packed(Szene)

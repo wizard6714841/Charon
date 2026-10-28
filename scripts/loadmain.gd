@@ -9,9 +9,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
 
-
+#läd ab heute test_level
 func _on_button_pressed() -> void:
 	
-	Sceneloading.LoadScene("scenes//main.tscn")
-	
+	Sceneloading.LoadScene("uid://eg1oj6iyamid")
 	pass # Replace with function body.
