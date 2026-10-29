@@ -3,6 +3,7 @@ extends CharacterBody3D
 @export var speed : float = 5.0
 @export var dodge_speed : float = 10.0
 @export var camera: Camera3D
+@export var rotation_to_mouse : bool = false
 
 var is_dodgeing : bool = false
 
@@ -50,25 +51,26 @@ func _physics_process(delta):
 	
 	move_and_slide()
 
-	# --- Rotation zur Maus ---
-	#var mouse_pos := get_viewport().get_mouse_position()
-	#var ray_origin := camera.project_ray_origin(mouse_pos)
-	#var ray_dir := camera.project_ray_normal(mouse_pos)
-	
-	#var ground := Plane(Vector3.UP, global_position.y)
-	#var hit = ground.intersects_ray(ray_origin, ray_dir)
-	
-	#if hit != null:
-		#var to_target: Vector3 = hit - global_position
-		#to_target.y = 0
-		#if to_target.length() > dead_zone:
-			#var target_angle := atan2(to_target.x, to_target.z)
-			#rotation.y = lerp_angle(rotation.y, target_angle, smooth * delta)
-	
-	# --- Rotation in Bewegungsrichtung ---
-	if velocity.x != 0 or velocity.z != 0:
-		var target_angle := atan2(velocity.x, velocity.z)
-		rotation.y = lerp_angle(rotation.y, target_angle, smooth * delta)   
+	if rotation_to_mouse:
+		# --- Rotation zur Maus ---
+		var mouse_pos := get_viewport().get_mouse_position()
+		var ray_origin := camera.project_ray_origin(mouse_pos)
+		var ray_dir := camera.project_ray_normal(mouse_pos)
+		
+		var ground := Plane(Vector3.UP, global_position.y)
+		var hit = ground.intersects_ray(ray_origin, ray_dir)
+		
+		if hit != null:
+			var to_target: Vector3 = hit - global_position
+			to_target.y = 0
+			if to_target.length() > dead_zone:
+				var target_angle := atan2(to_target.x, to_target.z)
+				rotation.y = lerp_angle(rotation.y, target_angle, smooth * delta)
+	else:
+		# --- Rotation in Bewegungsrichtung ---
+		if velocity.x != 0 or velocity.z != 0:
+			var target_angle := atan2(velocity.x, velocity.z)
+			rotation.y = lerp_angle(rotation.y, target_angle, smooth * delta)   
 
 
 func _on_idle_state_state_entered() -> void:
