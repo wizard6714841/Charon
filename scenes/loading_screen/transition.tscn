@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://dhj5xw50vas1q"]
+
+[ext_resource type="Script" uid="uid://bbyuiqxg4pvsg" path="res://scripts/loading/transition.gd" id="1_c4ltv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_adwej"]
+bg_color = Color(0.033310477, 2.3896919e-05, 0.14906672, 1)
+
+[sub_resource type="Animation" id="Animation_qkd1g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ProgressBar:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_c4ltv"]
+resource_name = "transition"
+length = 0.525
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ProgressBar:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.45, 0.525),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_47toq"]
+_data = {
+&"RESET": SubResource("Animation_qkd1g"),
+&"transition": SubResource("Animation_c4ltv")
+}
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=36671896 node_paths=PackedStringArray("animation_player")]
+layer = 10
+script = ExtResource("1_c4ltv")
+animation_player = NodePath("AnimationPlayer")
+
+[node name="Panel" type="Panel" parent="." unique_id=456935618]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_adwej")
+
+[node name="ProgressBar" type="ProgressBar" parent="Panel" unique_id=710263775]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 281.0
+offset_top = 225.0
+offset_right = 940.75
+offset_bottom = 299.5
+rounded = true
+allow_greater = true
+allow_lesser = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=152362186]
+root_node = NodePath("../Panel")
+libraries/ = SubResource("AnimationLibrary_47toq")
+autoplay = &"transition"

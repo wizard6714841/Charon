@@ -1,6 +1,9 @@
 extends Node
 
-var LoadingScene : PackedScene = preload("uid://e64ursa2s12v")
+signal loading_finished
+signal progressing
+
+var LoadingScene : PackedScene = preload("uid://dhj5xw50vas1q")
 var SceneStatus : Array
 var Load : bool = true
 
@@ -11,42 +14,48 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
-## Lädt eine Scene ohne Ladeszene. 
-##Eingabe: rechtsklick auf Scene -> UID kopieren, UID in "" einfügen
-##@deprecated
-func LoadSceneTest( Scene:String ) -> void:
+## Lädt eine Scene mit Ladeszene. 
+## Eingabe Scene: rechtsklick auf Scene -> UID kopieren, UID in "" einfügen
+## Eingabe fastload(optional): 1 ist schneller, 0 kann bei ladefehlern helfen
+func LoadScene( Scene : String, fastload : bool = 1 ) -> void:
 	
-	ResourceLoader.load_threaded_request(Scene,"",1)
+	ResourceLoader.load_threaded_request(Scene,"", fastload)
+	
+	var TransitionScene = LoadingScene.instantiate()
+	add_child(TransitionScene)
+	
+	loading_finished.connect(TransitionScene.on_load_finished)
+	progressing.connect(TransitionScene.on_progress_changed)
+	
+	progressing.emit(0.5)
+	
+	await TransitionScene.trans_finished
+	
+	change_scene(Scene)
+	
+	pass
 
+##interne Funktion 
+func change_scene( Scene : String ) -> void:
 	while Load:
 		ResourceLoader.load_threaded_get_status(Scene,SceneStatus)
+		
+		progressing.emit(SceneStatus[0])
+		
 		if SceneStatus[0] == 1:
+			
 			var Szene = ResourceLoader.load_threaded_get(Scene)
 			get_tree().change_scene_to_packed(Szene)
+			
+			loading_finished.emit()
+			
 			Load = false
 	Load = true
-	
-	pass
-
-
-##Vermutlich besser die Finger weg lassen (macht viele Rechnungen)
-func Stupid() -> void:
-	var peter = 0.003
-	var start_time = Time.get_ticks_msec()
-	while Time.get_ticks_msec() - start_time < 2000: # blocks for 2 seconds
-		peter = peter * peter + 1 + 12/peter
-		peter = peter * peter + 1 + 12
-		peter = peter * peter + 1 + 12
-		peter = peter * peter + 1 + 12
-		peter = peter * peter + 1 + 12
-		peter = peter * peter + 1 + 12
-		peter = peter * peter + 1 + 12
-	pass
-pass
 
 ## Lädt eine Scene mit Ladeszene. 
 ##Eingabe: rechtsklick auf Scene -> UID kopieren, UID in "" einfügen
-func LoadScene( Scene:String ) -> void:
+##@deprecated
+func LoadSceneTest( Scene:String ) -> void:
 	
 	
 	ResourceLoader.load_threaded_request(Scene,"",1)
