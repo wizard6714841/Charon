@@ -2,10 +2,15 @@ extends CharacterBody3D
 
 @export var speed : float = 5.0
 @export var dodge_speed : float = 10.0
+@export var dodge_imortal : float = 0.5
+@export var dodge_cooldown : float = 2.0
 @export var camera: Camera3D
 @export var rotation_to_mouse : bool = false
 
 var is_dodgeing : bool = false
+var can_dodge : bool = true
+
+var is_imortal : bool = false
 
 ##Benötigt für Rotation zur Maus
 const dead_zone := 0.5
@@ -17,11 +22,14 @@ const smooth := 10.0
 @onready var state_chart : StateChart = $StateChart
 
 func _physics_process(delta):
+	if not is_imortal:
+		print("Not Imortal")
+	
 	# Gravity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	if Input.is_action_just_pressed("dodge_roll"):
+	if Input.is_action_just_pressed("dodge_roll") and can_dodge:
 		state_chart.send_event("toDodge")
 	
 	# Movement (relativ zur Kamera, nicht zum Charakter)
@@ -30,12 +38,8 @@ func _physics_process(delta):
 	direction = direction.rotated(Vector3.UP, camera.global_rotation.y).normalized()
 
 	if is_dodgeing:
-		if direction:
-			velocity.x = direction.x * dodge_speed
-			velocity.z = direction.z * dodge_speed
-		else:
-			velocity.x = move_toward(velocity.x, 0, dodge_speed)
-			velocity.z = move_toward(velocity.z, 0, dodge_speed)
+		var dodge_direction = transform.basis.z.normalized()
+		velocity = dodge_direction * dodge_speed
 	else:
 		if direction:
 			velocity.x = direction.x * speed
@@ -87,7 +91,20 @@ func _on_run_state_state_entered() -> void:
 
 func _on_dodge_state_state_entered() -> void:
 	is_dodgeing = true
+	can_dodge = false
+	
 	animations.play("player_animations/dodge_roll")
+	
+	var dodge_duration : float = 0.5
+	is_imortal = true
+	await get_tree().create_timer(dodge_duration).timeout
+	
+	is_dodgeing = false
+	is_imortal = false
+	
+	await  get_tree().create_timer(dodge_cooldown).timeout
+	
+	can_dodge = true
 
 func _on_idle_state_state_physics_processing(_delta: float) -> void:
 	pass
