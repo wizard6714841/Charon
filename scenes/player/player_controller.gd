@@ -78,15 +78,13 @@ func _physics_process(delta):
 
 
 func _on_idle_state_state_entered() -> void:
-	if animations.current_animation == "player_animations/dodge_roll":
-		await animations.animation_finished
-		is_dodgeing = false
+	if is_dodgeing:
+		return
 	animations.play("player_animations/idle")
 
 func _on_run_state_state_entered() -> void:
-	if animations.current_animation == "player_animations/dodge_roll":
-		await animations.animation_finished
-		is_dodgeing = false
+	if is_dodgeing:
+		return
 	animations.play("player_animations/slow_run")
 
 func _on_dodge_state_state_entered() -> void:
@@ -103,8 +101,9 @@ func _on_dodge_state_state_entered() -> void:
 	is_imortal = false
 	
 	await  get_tree().create_timer(dodge_cooldown).timeout
-	
 	can_dodge = true
+	
+	state_chart.send_event("toIdle")
 
 func _on_idle_state_state_physics_processing(_delta: float) -> void:
 	pass
