@@ -1,8 +1,8 @@
 extends Marker3D
 
-@export var enemys : Array[PackedScene] = []
-@export var enemys_spawn_chance : Array[int] = []
-@export var spawn_enemys_at_start : bool = false
+@export var entity : Array[PackedScene] = []
+@export var entity_spawn_chance : Array[int] = []
+@export var spawn_entity_at_start : bool = false
 @export var spawn_reste_time : float = 3.0
 @export var one_time_spawn : bool = true
 
@@ -14,7 +14,7 @@ var can_spawn : bool = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	timer_ref.wait_time = spawn_reste_time
-	if spawn_enemys_at_start:
+	if spawn_entity_at_start:
 		spawn()
 
 func _on_activation_area_body_entered(body: Node3D) -> void:
@@ -31,18 +31,18 @@ func _on_timer_timeout() -> void:
 
 func spawn() -> void:
 	if can_spawn:
-		var enemy_instance
-		if enemys.size() == 1:
-			enemy_instance = enemys[0].instantiate()
+		var entity_instance
+		if entity.size() == 1:
+			entity_instance = entity[0].instantiate()
 		else:
-			enemy_instance = enemys[random_enemy()].instantiate()
-		add_child(enemy_instance)
+			entity_instance = entity[random_enemy()].instantiate()
+		add_child(entity_instance)
 	
 	if one_time_spawn:
 		can_spawn = false
-	elif spawn_enemys_at_start:
+	elif spawn_entity_at_start:
 		can_spawn = false
-		spawn_enemys_at_start = false
+		spawn_entity_at_start = false
 	elif timer_ref.is_stopped():
 		timer_ref.start()
 		can_spawn = false
@@ -53,13 +53,13 @@ func random_enemy():
 	
 	var weighted_sum : int = 0
 	
-	for n in range(enemys.size()):
-		weighted_sum += enemys_spawn_chance[n]
+	for n in range(entity.size()):
+		weighted_sum += entity_spawn_chance[n]
 	
-	var enemy_to_spawn = rng.randi_range(0, weighted_sum)
+	var entity_to_spawn = rng.randi_range(0, weighted_sum)
 	
-	for n in range(enemys.size()):
-		if enemy_to_spawn <= enemys_spawn_chance[n]:
+	for n in range(entity.size()):
+		if entity_to_spawn <= entity_spawn_chance[n]:
 			return n
-		enemy_to_spawn -= enemys_spawn_chance[n]
+		entity_to_spawn -= entity_spawn_chance[n]
 	
