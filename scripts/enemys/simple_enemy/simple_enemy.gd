@@ -79,11 +79,10 @@ func _on_search_state_state_physics_processing(delta: float) -> void:
 		animations.play("enemy_animations/searching")
 	
 	if nav_agent.target_position != Vector3.INF:
-		if last_known_position <= Vector3.ONE:
-			
+		if last_known_position != nav_agent.get_final_position():
 			nav_agent.target_position = last_known_position
 
-			if nav_agent.is_navigation_finished() or global_position.distance_to(last_known_position) < 0.01:
+			if nav_agent.is_navigation_finished() or global_position.distance_to(nav_agent.get_final_position()) < 0.01:
 				nav_agent.velocity = Vector3.ZERO
 				nav_agent.target_position = Vector3.INF
 				return
@@ -99,12 +98,15 @@ func _on_search_state_state_physics_processing(delta: float) -> void:
 			nav_agent.target_position = Vector3.INF
 	else:
 		animations.play("enemy_animations/searching")
-		var random_pos_search = random_pos_in_search_range()
-		
 		await animations.animation_finished
 		
 		if searched >= search_amount:
 			state_chart.send_event("toBackToSpawn")
+		
+		var random_pos_search = random_pos_in_search_range()
+		
+		nav_agent.velocity = Vector3.ZERO
+		nav_agent.target_position = Vector3.INF
 		
 		nav_agent.target_position = random_pos_search
 		last_known_position = random_pos_search
