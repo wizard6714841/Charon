@@ -3,7 +3,7 @@ extends CharacterBody3D
 @export var speed : float = 5.0
 @export var dodge_speed : float = 10.0
 @export var dodge_imortal : float = 0.5
-@export var dodge_cooldown : float = 2.0
+@export var dodge_cooldown : float = 0.5
 @export var camera: Camera3D
 @export var rotation_to_mouse : bool = false
 
