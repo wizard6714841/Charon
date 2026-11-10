@@ -207,7 +207,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("CapsuleShape3D_vcchk")
 
 [node name="Root" type="Node3D" parent="." unique_id=1184907858]
-transform = Transform3D(0.98443425, 0.02152029, -0.17443068, -0.0760344, 0.9469402, -0.31228688, 0.15845495, 0.32068872, 0.93383634, 0.007329638, -0.058358993, -0.27855086)
+transform = Transform3D(0.98443425, 0.02152029, -0.17443068, -0.0760344, 0.9469402, -0.31228685, 0.15845495, 0.32068872, 0.9338363, 0.007329638, -0.058358993, -0.27855086)
 
 [node name="Skeleton3D" type="Skeleton3D" parent="Root" unique_id=1731869318]
 bones/0/name = "Pelvis"
