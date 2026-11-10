@@ -23,7 +23,8 @@ const smooth := 10.0
 
 func _physics_process(delta):
 	if not is_imortal:
-		print("Not Imortal")
+		#print("Not Imortal")
+		pass
 	
 	# Gravity
 	if not is_on_floor():
