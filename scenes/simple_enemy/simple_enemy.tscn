@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://cytafq8i1y8qm" path="res://addons/godot_state_charts/atomic_state.gd" id="5_othax"]
 [ext_resource type="Script" uid="uid://cf1nsco3w0mf6" path="res://addons/godot_state_charts/transition.gd" id="6_3dooi"]
 [ext_resource type="Animation" uid="uid://pk66dhnvdipl" path="res://assets/mixamo/animations/walking.res" id="6_7b53w"]
+[ext_resource type="Script" uid="uid://dd6t1q0cns7dj" path="res://CustomNodes/health_component.gd" id="11_1bl6i"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vcchk"]
 radius = 0.225
@@ -205,6 +206,12 @@ radius = 1.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fv00s"]
 radius = 5.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fv00s"]
+radius = 0.35
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_w51dc"]
+radius = 0.3
 
 [node name="simple_enemy" type="CharacterBody3D" unique_id=1319063277 groups=["enemy"]]
 script = ExtResource("1_apnxd")
@@ -622,6 +629,7 @@ autoplay = &"enemy_animations/idle"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="attack_range" unique_id=549088873]
 shape = SubResource("SphereShape3D_vcchk")
+disabled = true
 
 [node name="sight_range" type="Area3D" parent="." unique_id=12738891]
 
@@ -678,6 +686,25 @@ to = NodePath("../BackToSpawn")
 event = &"toBackToSpawn"
 delay_in_seconds = "0.0"
 
+[node name="HealthComponent" type="Node3D" parent="." unique_id=267895556 node_paths=PackedStringArray("hit_box", "hurt_box")]
+script = ExtResource("11_1bl6i")
+hit_box = NodePath("HitBox")
+hurt_box = NodePath("HurtBox")
+damage = 10.0
+metadata/_custom_type_script = "uid://dd6t1q0cns7dj"
+
+[node name="HitBox" type="Area3D" parent="HealthComponent" unique_id=2016869837]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HealthComponent/HitBox" unique_id=740323097 groups=["hitbox"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_fv00s")
+
+[node name="HurtBox" type="Area3D" parent="HealthComponent" unique_id=539730466]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HealthComponent/HurtBox" unique_id=328851265 groups=["weapon"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2132568, 0.67089844)
+shape = SubResource("SphereShape3D_w51dc")
+
 [connection signal="current_animation_changed" from="animation_player" to="." method="_on_animation_player_current_animation_changed"]
 [connection signal="body_entered" from="attack_range" to="." method="_on_attack_range_body_entered"]
 [connection signal="body_entered" from="sight_range" to="." method="_on_sight_range_body_entered"]
@@ -689,3 +716,5 @@ delay_in_seconds = "0.0"
 [connection signal="state_physics_processing" from="StateChart/Root/SearchingState" to="." method="_on_search_state_state_physics_processing"]
 [connection signal="state_entered" from="StateChart/Root/BackToSpawn" to="." method="_on_back_to_spawn_state_entered"]
 [connection signal="state_physics_processing" from="StateChart/Root/BackToSpawn" to="." method="_on_back_to_spawn_state_physics_processing"]
+[connection signal="body_entered" from="HealthComponent/HitBox" to="HealthComponent" method="_on_hit_box_body_entered"]
+[connection signal="body_entered" from="HealthComponent/HurtBox" to="HealthComponent" method="_on_hurt_box_body_entered"]
