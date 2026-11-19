@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://br7tbvwwk4rma"]
+
+[ext_resource type="Shader" uid="uid://m10yyhso5n5x" path="res://Shader/transparent_wall.gdshader" id="1_s13e1"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8ooma"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nstnp"]
+render_priority = 0
+shader = ExtResource("1_s13e1")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_8ooma")
+shader_parameter/layers = 8
+shader_parameter/depth_amount = 1.0
+shader_parameter/fade_amount = 1.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_vcchk"]
+material = SubResource("ShaderMaterial_nstnp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" unique_id=1363366914]
+mesh = SubResource("QuadMesh_vcchk")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1191824379]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.94177246)
