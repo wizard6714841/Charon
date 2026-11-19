@@ -90,6 +90,8 @@ func _get_damage() -> float:
 
 ## Schaden machen
 func _deal_damage() -> float:
+	print("Deal Damage")
+	print(get_parent())
 	return _get_damage()
 
 ## Schaden bekommen
@@ -97,15 +99,25 @@ func _receive_damage(value : float) -> void:
 	_set_health(_get_health() - value)
 
 func _on_hit_box_body_entered(body: Node3D) -> void:
-	if not body.is_in_group("weapon"):
+	if not (body.is_in_group("player") or body.is_in_group("enemy")):
 		return
 	else:
-		if (_get_health() - _get_damage()) > 0:
-			_receive_damage(_get_damage())
-			print(_get_health())
+		if not body.find_child("HurtBox").get_child(0).is_in_group("weapon"):
+			return
+		else:
+			print("Test")
+			if (_get_health() - _get_damage()) > 0:
+				_receive_damage(_get_damage())
+				print(_get_health())
+				print(get_parent())
+			else:
+				print("Dead")
 
 func _on_hurt_box_body_entered(body: Node3D) -> void:
-	if not body.is_in_group("player"):
+	if not (body.is_in_group("player") or body.is_in_group("enemy")):
 		return
 	else:
-		_deal_damage()
+		if not body.find_child("HitBox").get_child(0).is_in_group("hitbox"):
+			return
+		else:
+			_deal_damage()

@@ -199,9 +199,11 @@ _data = {
 &"slow_run": ExtResource("3_p47bc")
 }
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_vcchk"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h17s1"]
+radius = 0.35
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_fv00s"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_je7p5"]
+radius = 0.3
 
 [node name="player" type="CharacterBody3D" unique_id=1319063277 groups=["player"]]
 script = ExtResource("1_dovo2")
@@ -650,23 +652,24 @@ to = NodePath("../DodgeState")
 event = &"toDodge"
 delay_in_seconds = "0.0"
 
-[node name="HealthComponent" type="Node3D" parent="." unique_id=790523112 node_paths=PackedStringArray("hit_box", "hurt_box")]
+[node name="HealthComponent" type="Node3D" parent="." unique_id=758095458 node_paths=PackedStringArray("hit_box", "hurt_box")]
 script = ExtResource("10_h17s1")
 hit_box = NodePath("HitBox")
 hurt_box = NodePath("HurtBox")
+damage = 20.0
 metadata/_custom_type_script = "uid://dd6t1q0cns7dj"
 
-[node name="HitBox" type="Area3D" parent="HealthComponent" unique_id=485062701]
+[node name="HitBox" type="Area3D" parent="HealthComponent" unique_id=1506362462]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HealthComponent/HitBox" unique_id=1308033233]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1889038, 0, 0)
-shape = SubResource("BoxShape3D_vcchk")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HealthComponent/HitBox" unique_id=1872094816 groups=["hitbox"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_h17s1")
 
-[node name="HurtBox" type="Area3D" parent="HealthComponent" unique_id=611114745]
+[node name="HurtBox" type="Area3D" parent="HealthComponent" unique_id=191237859]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HealthComponent/HurtBox" unique_id=1412840000]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5467529, 0, 0)
-shape = SubResource("BoxShape3D_fv00s")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HealthComponent/HurtBox" unique_id=2026591355 groups=["weapon"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2132568, 0.67089844)
+shape = SubResource("SphereShape3D_je7p5")
 
 [connection signal="state_entered" from="StateChart/Root/IdleState" to="." method="_on_idle_state_state_entered"]
 [connection signal="state_physics_processing" from="StateChart/Root/IdleState" to="." method="_on_idle_state_state_physics_processing"]

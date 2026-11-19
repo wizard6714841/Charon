@@ -40,6 +40,7 @@ enemy=""
 geometry=""
 player=""
 weapon=""
+hitbox=""
 
 [input]
 

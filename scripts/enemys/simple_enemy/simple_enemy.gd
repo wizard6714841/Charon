@@ -57,10 +57,6 @@ func _on_follow_state_state_entered() -> void:
 	animations.play("enemy_animations/slow_run")
 	searched = 0
 
-func _on_attack_range_body_entered(body: Node3D) -> void:
-	if body.is_in_group("player"):
-		print("Attack")
-
 func _on_sight_range_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		on_trigger()
