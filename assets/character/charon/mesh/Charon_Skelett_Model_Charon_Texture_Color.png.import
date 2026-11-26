@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://522aa0uhnmh8"
-path.s3tc="res://.godot/imported/Charakter_Roughness.png-1ad4c07d26dad6ad2f4c3b428afbbce5.s3tc.ctex"
+uid="uid://c2886h23kkkcn"
+path.s3tc="res://.godot/imported/Charon_Skelett_Model_Charon_Texture_Color.png-0e3d0c45ab3d1c1a0f84b1722e53cdf4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "db90f47ac8a02c2de64a8f80565e288b"
+}
 
 [deps]
 
-source_file="res://assets/character/charon/textures/Charakter_Roughness.png"
-dest_files=["res://.godot/imported/Charakter_Roughness.png-1ad4c07d26dad6ad2f4c3b428afbbce5.s3tc.ctex"]
+source_file="res://assets/character/charon/mesh/Charon_Skelett_Model_Charon_Texture_Color.png"
+dest_files=["res://.godot/imported/Charon_Skelett_Model_Charon_Texture_Color.png-0e3d0c45ab3d1c1a0f84b1722e53cdf4.s3tc.ctex"]
 
 [params]
 

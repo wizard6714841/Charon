@@ -43,7 +43,7 @@ _subresources={
 "animations": {
 "ArmatureAction": {
 "save_to_file/enabled": true,
-"save_to_file/fallback_path": "res://assets/character/charon/animations/charon_schwert_angriff_01.res",
+"save_to_file/fallback_path": "res://assets/character/charon/animations/chraon_schwert_angriff_01.res",
 "save_to_file/keep_custom_tracks": "",
 "save_to_file/path": "uid://cud0g18jpnu4d",
 "settings/loop_mode": 0,

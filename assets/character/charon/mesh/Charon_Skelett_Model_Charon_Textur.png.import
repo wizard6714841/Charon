@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxft3s7hrr18y"
-path.s3tc="res://.godot/imported/Charon_Model_Charakter-Normals.png-7d5ea0c0e657056350197665cc947fec.s3tc.ctex"
+uid="uid://6juvv3ky2eox"
+path.s3tc="res://.godot/imported/Charon_Skelett_Model_Charon_Textur.png-28b6f70a1026a40aa944c4cb5d4f53a7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "d96674a4c847582c128f52d523d720fa"
+"md5": "408c8b0543d3be45d66e6fd3b1ef8e1e"
 }
 
 [deps]
 
-source_file="res://assets/character/charon/mesh/Charon_Model_Charakter-Normals.png"
-dest_files=["res://.godot/imported/Charon_Model_Charakter-Normals.png-7d5ea0c0e657056350197665cc947fec.s3tc.ctex"]
+source_file="res://assets/character/charon/mesh/Charon_Skelett_Model_Charon_Textur.png"
+dest_files=["res://.godot/imported/Charon_Skelett_Model_Charon_Textur.png-28b6f70a1026a40aa944c4cb5d4f53a7.s3tc.ctex"]
 
 [params]
 
@@ -30,7 +30,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://assets/character/charon/mesh/Charon_Model_Charakter-Normals.png"
+roughness/src_normal="res://assets/character/charon/mesh/Charon_Skelett_Model_Charon_Textur.png"
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2

@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://do0pl1t0jghgy"
-path.s3tc="res://.godot/imported/Charakter_Normals.png-d348f3ec2a8f992bbc00337d2b884a04.s3tc.ctex"
+uid="uid://bxb72i7ipfc16"
+path.s3tc="res://.godot/imported/Charon_Skelett_Model_Charon_Textur_Metallic-Charon_Textur_Roughtness.png-9ecd6fb8c4451851730fdea12506f67b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "03f3e22c08e1fe19e4b70bd0b66f52d2"
+}
 
 [deps]
 
-source_file="res://assets/character/charon/textures/Charakter_Normals.png"
-dest_files=["res://.godot/imported/Charakter_Normals.png-d348f3ec2a8f992bbc00337d2b884a04.s3tc.ctex"]
+source_file="res://assets/character/charon/mesh/Charon_Skelett_Model_Charon_Textur_Metallic-Charon_Textur_Roughtness.png"
+dest_files=["res://.godot/imported/Charon_Skelett_Model_Charon_Textur_Metallic-Charon_Textur_Roughtness.png-9ecd6fb8c4451851730fdea12506f67b.s3tc.ctex"]
 
 [params]
 
@@ -22,12 +25,12 @@ compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=1
-roughness/src_normal="res://assets/character/charon/textures/Charakter_Normals.png"
+roughness/mode=0
+roughness/src_normal=""
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2
