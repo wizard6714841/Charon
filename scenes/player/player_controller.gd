@@ -20,6 +20,10 @@ const smooth := 10.0
 
 @onready var animations : AnimationPlayer = $AnimationPlayer
 @onready var state_chart : StateChart = $StateChart
+@onready var attack_timer : Timer = $attack_timer
+
+###Ob ein zweiter Angriff ausgeführt werden soll
+var second_attack : bool = false
 
 func _physics_process(delta):
 	if not is_imortal:
@@ -32,6 +36,12 @@ func _physics_process(delta):
 
 	if Input.is_action_just_pressed("dodge_roll") and can_dodge:
 		state_chart.send_event("toDodge")
+	
+	if Input.is_action_just_pressed("attack"):
+		state_chart.send_event("toAttack")
+	
+	if second_attack == true:
+		state_chart.send_event("toAttack")
 	
 	# Movement (relativ zur Kamera, nicht zum Charakter)
 	var input_dir := Input.get_vector("left", "right", "forward", "backward")
@@ -81,6 +91,8 @@ func _physics_process(delta):
 func _on_idle_state_state_entered() -> void:
 	if is_dodgeing:
 		return
+	if animations.current_animation == "charon_schwert_angriff_01" or animations.current_animation == "charon_schwert_angriff_02":
+		return
 	animations.play("charon_stehen_idle_01")
 
 func _on_run_state_state_entered() -> void:
@@ -111,3 +123,18 @@ func _on_idle_state_state_physics_processing(_delta: float) -> void:
 
 func _on_run_state_state_physics_processing(_delta: float) -> void:
 	pass
+
+func _on_attack_state_state_entered() -> void:
+	if second_attack == true:
+		if animations.current_animation_position >= 1.0:
+			animations.play("charon_schwert_angriff_02")
+			second_attack = false
+	elif animations.current_animation == "charon_schwert_angriff_01":
+		if animations.current_animation_position >= 0.1 and animations.current_animation_position <= 0.95:
+			second_attack = true
+	else:
+		if animations.current_animation == "charon_schwert_angriff_02":
+			await animations.animation_finished
+		animations.play("charon_schwert_angriff_01")
+	
+	
