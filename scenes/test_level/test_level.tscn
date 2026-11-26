@@ -2,13 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://d1tpuyppdl7q7" path="res://scenes/building_blocks/floor_5x_5.tscn" id="1_ninfq"]
 [ext_resource type="PackedScene" uid="uid://bx0fw4q6nny5e" path="res://scenes/building_blocks/wall_2x_3.tscn" id="2_4ck26"]
+[ext_resource type="PackedScene" uid="uid://bcf2bnupiomlw" path="res://scenes/player/Charon/charon_player_and_camera.tscn" id="2_eqec7"]
 [ext_resource type="PackedScene" uid="uid://b0nbyor7ppr0v" path="res://scenes/building_blocks/wall_chamfered_5x_5.tscn" id="3_eqec7"]
 [ext_resource type="PackedScene" uid="uid://bwu6ispii2cs6" path="res://scenes/building_blocks/rail_5x_1.tscn" id="4_nd1x5"]
 [ext_resource type="PackedScene" uid="uid://ddfxci5b6m7fj" path="res://scenes/building_blocks/wall_door_double_5x_3.tscn" id="5_mfp2k"]
 [ext_resource type="PackedScene" uid="uid://dtaqv738x4xtg" path="res://scenes/building_blocks/stairs_1x_2.tscn" id="6_su4wh"]
 [ext_resource type="PackedScene" uid="uid://bkfuk14qki6xc" path="res://scenes/spawner/spawner.tscn" id="7_sy7g6"]
 [ext_resource type="PackedScene" uid="uid://bcf0b3fu47d1g" path="res://scenes/simple_enemy/simple_enemy.tscn" id="8_lkhxe"]
-[ext_resource type="PackedScene" uid="uid://cmib1ea0qpxog" path="res://scenes/player/player_and_camera.tscn" id="9_4ck26"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_vcchk"]
 vertices = PackedVector3Array(-6, 0.37645996, -7.5, -6, 0.37645996, -9.25, -9.25, 0.37645996, -9.25, -8.75, 0.37645996, -5, -9.25, 0.37645996, 4.25, -8.75, 0.37645996, 4.25, -7.5, 0.37645996, 6, -9.25, 0.37645996, 6, -9.25, 0.37645996, 9.25, -5, 0.37645996, 8.75, 9.25, 0.37645996, 9.25, 9.25, 0.37645996, -9.25, 8.75, 0.37645996, -5, 9, 0.37645996, 5.5, 8.5, 0.37645996, 6, 7.5, 0.37645996, 6, 5, 0.37645996, 8.75, -3.5, 0.37645996, 9, -4, 0.37645996, -9.25, -4, 0.37645996, -8.75, 5, 0.37645996, -8.75, -1, 0.37645996, 6, -4.75, 0.37645996, 6.25, -3.5, 0.37645996, 7, 3.5, 0.37645996, 7, 4.75, 0.37645996, 6.25, 0.25, 0.37645996, 6, 1.5, 0.62645996, -1, 4.5, 2.12646, -1, 4.5, 2.12646, -1.75, 1.25, 0.62645996, -2, 2, 0.37645996, 4.25, 2.5, 0.37645996, 0.5, 1.25, 0.37645996, 0.25, 0.25, 0.37645996, 4, -1, 0.37645996, 4, 1.5, 0.37645996, -3.25, 3, 0.37645996, -3.25, 3, 0.37645996, -7, -4, 0.37645996, -6.75, -4, 0.37645996, 4.25, -0.25, 0.37645996, 5.5, -0.5, 0.37645996, 5.5, 4.25, 0.37645996, -6.75, 5.5, 0.37645996, -3.25, 6.75, 0.37645996, -4.25, 7, 0.37645996, 3.5, 6, 0.37645996, 0, 5.5, 0.37645996, 0.5, 6.75, 0.37645996, 4.25, 6, 0.37645996, -2.75, -7, 0.37645996, 3.5, -6.75, 0.37645996, 4.25, -6, 0.37645996, 4.25, -6, 0.37645996, -4.75, -7, 0.37645996, -3.5)
@@ -24,7 +24,7 @@ agent_radius = 0.6
 
 [node name="spawner" parent="player" unique_id=1327086842 instance=ExtResource("7_sy7g6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8474704, 0, 3.2732759)
-entity = Array[PackedScene]([ExtResource("9_4ck26")])
+entity = Array[PackedScene]([ExtResource("2_eqec7")])
 entity_spawn_chance = Array[int]([100])
 spawn_entity_at_start = true
 

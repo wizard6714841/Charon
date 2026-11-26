@@ -18,7 +18,7 @@ const dead_zone := 0.5
 ##Wie schnell sich der Character drehen soll
 const smooth := 10.0
 
-@onready var animations : AnimationPlayer = $animation_player
+@onready var animations : AnimationPlayer = $AnimationPlayer
 @onready var state_chart : StateChart = $StateChart
 
 func _physics_process(delta):
@@ -81,20 +81,20 @@ func _physics_process(delta):
 func _on_idle_state_state_entered() -> void:
 	if is_dodgeing:
 		return
-	animations.play("player_animations/idle")
+	animations.play("charon_stehen_idle_01")
 
 func _on_run_state_state_entered() -> void:
 	if is_dodgeing:
 		return
-	animations.play("player_animations/slow_run")
+	animations.play("charon_laufen_01")
 
 func _on_dodge_state_state_entered() -> void:
 	is_dodgeing = true
 	can_dodge = false
 	
-	animations.play("player_animations/dodge_roll")
+	animations.play("charon_dodge_01")
 	
-	var dodge_duration : float = 0.5
+	var dodge_duration : float = 1.0
 	is_imortal = true
 	await get_tree().create_timer(dodge_duration).timeout
 	
